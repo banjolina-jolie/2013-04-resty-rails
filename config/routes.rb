@@ -2,6 +2,9 @@ Clams::Application.routes.draw do
   # Access API description at /api_taster
   mount ApiTaster::Engine => "/api_taster" if Rails.env.development?
 
+  # post '/comments' => 'comments#create'
+  # get '/comments/:id' => 'comments#show'
+  resources :comments, :groups, :posts, :statuses, :subscriptions, :users
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
