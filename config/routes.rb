@@ -5,6 +5,10 @@ Clams::Application.routes.draw do
   # post '/comments' => 'comments#create'
   # get '/comments/:id' => 'comments#show'
   resources :comments, :groups, :posts, :statuses, :subscriptions, :users
+
+  # get '/' => 'posts#index'
+
+  # root :to => 'posts#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

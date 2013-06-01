@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <meta content="authenticity_token" name="csrf-param">
+  <meta content="bggRcK/fNhJYCDciyLM2btZ6FV46JzcdD+xy6ad1WO0=" name="csrf-token">
+</head>
+<body>
+  <form id='myForm'>
+    Name<input type='text' name="user[name]">
+    Email<input type='text' name="user[email]">
+    <input type="submit" value="add user">
+  </form>
+  <h2>Users:</h2>
+  <ul id="display"></ul>
+    <script type="text/javascript">
+      $(function() {
+        $.ajax({
+          url:'http://0.0.0.0:3000/users',
+          contentType: 'application/json',
+          success: function(data){
+            data.forEach(function(user){
+              $('#display').append('<li><a href="users/'+user.id+'"">'+user.name+'</a></li>');
+            });
+          },
+          error: function(){
+            console.log('boooo');
+          }
+        });
+      });
+
+      $(function() {
+        $('#myForm').submit(function() {
+          $.post('/users', $("#myForm").serialize(), function(user){
+            $('#display').append('<li><a href="users/'+user.id+'"">'+user.name+'</a></li>');
+          });
+          return false;
+        });
+      });
+    </script>
+</body>
+</html>

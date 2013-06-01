@@ -9,7 +9,8 @@ class User < ActiveRecord::Base
   has_many :comments
 
   validates :name, :presence => true
-  validates :email, :uniqueness => true, :format => { :with => /\w+@\w+\.(com|net|org)/ } 
+  validates :email, :uniqueness => true,
+                    :format => { :with => /\w+@\w+\.(com|net|org)/ }
 
   after_create :welcome_status
 

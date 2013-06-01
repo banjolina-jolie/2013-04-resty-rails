@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
   # GET /users
+  respond_to :json #, :html
   def index
     @users = User.all
-    render :json => @users
+    respond_with(@users)
+    # render :json => @users
   end
 
   # GET /users/1
@@ -14,10 +16,11 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
+    puts params
     @user = User.new(params[:user])
     if @user.save
-      head :created
-      # redirect_to users_path
+      # head :created
+      respond_with @user
     else
       head :status => 400
     end
