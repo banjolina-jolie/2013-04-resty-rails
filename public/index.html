@@ -1,43 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title></title>
-  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-  <meta content="authenticity_token" name="csrf-param">
-  <meta content="bggRcK/fNhJYCDciyLM2btZ6FV46JzcdD+xy6ad1WO0=" name="csrf-token">
-</head>
-<body>
-  <form id='myForm'>
-    Name<input type='text' name="user[name]">
-    Email<input type='text' name="user[email]">
-    <input type="submit" value="add user">
-  </form>
-  <h2>Users:</h2>
-  <ul id="display"></ul>
-    <script type="text/javascript">
-      $(function() {
-        $.ajax({
-          url:'http://0.0.0.0:3000/users',
-          contentType: 'application/json',
-          success: function(data){
-            data.forEach(function(user){
-              $('#display').append('<li><a href="users/'+user.id+'"">'+user.name+'</a></li>');
-            });
-          },
-          error: function(){
-            console.log('boooo');
-          }
-        });
-      });
+  <head>
+    <title></title>
+  </head>
+  <body>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://underscorejs.org/underscore-min.js"></script>
+    <script src="http://backbonejs.org/backbone-min.js"></script>
 
-      $(function() {
-        $('#myForm').submit(function() {
-          $.post('/users', $("#myForm").serialize(), function(user){
-            $('#display').append('<li><a href="users/'+user.id+'"">'+user.name+'</a></li>');
-          });
-          return false;
-        });
+    <script src="js/App.js"></script>
+    <script src="js/AppView.js"></script>
+    <script src="js/User.js"></script>
+    <script src="js/Users.js"></script>
+    <script src="js/UsersView.js"></script>
+    <script src="js/UserView.js"></script>
+
+    <script>
+      $(function(){
+        var userList = new Users();
+        var app = new App({userList: userList});
+        var appView = new AppView({model: app});
+        $('body').append(appView.render());
       });
     </script>
-</body>
+  </body>
 </html>

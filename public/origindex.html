@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="http://documentcloud.github.io/backbone/backbone-min.js"></script>
+  <script src="http://underscorejs.org/underscore-min.js"></script>
+  <script src="js/dirtyAjax.js"></script>
+  <meta content="authenticity_token" name="csrf-param">
+  <meta content="bggRcK/fNhJYCDciyLM2btZ6FV46JzcdD+xy6ad1WO0=" name="csrf-token">
+</head>
+<body>
+  <form id='myForm'>
+    User Name<input id="usrNameInput" type='text' name="user[name]">
+    Email<input id="emailInput" type='text' name="user[email]">
+    <input type="submit" value="add user">
+  </form>
+  <h2>Users:</h2>
+  <ul id="userDisplay"></ul>
+
+  <form id='groupForm'>
+    Group Name<input id="grpNameInput" type='text' name="group[name]">
+    Motto<input id="mottoInput" type='text' name="group[motto]">
+    <input type="submit" value="add group">
+  </form>
+  <h2>Groups:</h2>
+  <ul id="groupDisplay"></ul>
+</body>
+</html>

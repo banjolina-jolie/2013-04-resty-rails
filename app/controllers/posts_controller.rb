@@ -2,7 +2,8 @@ class PostsController < ApplicationController
   # GET /posts
   def index
     @posts = Post.all
-    render :json => @posts
+    # render :json => @posts
+    respond_with(@posts)
   end
 
   # GET /posts/1
@@ -16,8 +17,8 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params[:post])
     if @post.save
-      head :created
-      # redirect_to posts_path
+      # head :created
+      respond_with @group
     else
       head :status => 400
     end
