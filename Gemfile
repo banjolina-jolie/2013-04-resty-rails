@@ -40,6 +40,7 @@ group :test, :development do
   gem 'pry'
   gem 'pry-doc'
   gem 'pry_debug'
+  gem 'rails-backbone'
 end
 
 #gem 'jquery-rails'
