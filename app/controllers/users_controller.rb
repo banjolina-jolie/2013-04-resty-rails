@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       # head :created
-      respond_with @user
+      render :json => @user
     else
       head :status => 400
     end

@@ -2,6 +2,7 @@
 <html>
   <head>
     <title></title>
+    <link href="css/styles.css" rel="stylesheet" type="text/css" media="screen">
   </head>
   <body>
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -10,18 +11,28 @@
 
     <script src="js/App.js"></script>
     <script src="js/AppView.js"></script>
+
     <script src="js/User.js"></script>
     <script src="js/Users.js"></script>
     <script src="js/UsersView.js"></script>
     <script src="js/UserView.js"></script>
+    <script src="js/CreateUserView.js"></script>
+
+    <script src="js/Group.js"></script>
+    <script src="js/Groups.js"></script>
+    <script src="js/GroupsView.js"></script>
+    <script src="js/GroupView.js"></script>
 
     <script>
-      $(function(){
+    
         var userList = new Users();
-        var app = new App({userList: userList});
+        var groupList = new Groups();
+
+        var app = new App({userList: userList, groupList: groupList});
         var appView = new AppView({model: app});
-        $('body').append(appView.render());
-      });
+        var createUser = new CreateUserView();
+        $('body').append(createUser.render(), appView.render());
+    
     </script>
   </body>
 </html>
